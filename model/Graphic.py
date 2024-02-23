@@ -5,7 +5,7 @@ import plotly.graph_objects as go
 from math import pi
 from sqlalchemy import create_engine
 
-class Graphic(object):
+class Graphics(object):
     
     _instance = None
     
