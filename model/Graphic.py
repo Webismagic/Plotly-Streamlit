@@ -2,9 +2,7 @@ import pandas as pd
 import plotly
 import plotly.express as px
 import plotly.graph_objects as go
-import json
 from math import pi
-import pylab as pl
 from sqlalchemy import create_engine
 
 class Graphic(object):
@@ -51,11 +49,7 @@ class Graphic(object):
         df_without_boats['Species'] = df_without_boats.index.get_level_values('Species')
         
         fig = px.bar(df_without_boats, x='Month', y='N', color='Species',title = f"Species distribution by month {year}", template='plotly_white',labels={"N": "# sightings"})
-        #fig.show()
         
-        # Create a JSON representation of the graph
-        #graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-        #return graphJSON
         return fig
     
 #=====================================================================
@@ -78,12 +72,8 @@ class Graphic(object):
         #fig2.update_layout(yaxis_range=[0,100])
         
         fig2.add_trace(go.Scatter(x=df_sessions['Month'],y=df_sessions['N'],mode="lines", line=go.scatter.Line(color="gray"),  name='Sessions', showlegend=True))
-            
-        fig2.show()
-
-        # Create a JSON representation of the graph
-        graphJSON = json.dumps(fig2, cls=plotly.utils.PlotlyJSONEncoder)
-        return graphJSON
+        
+        return fig2
     
 #===================================================================
 # 3 : Line : distribution of seasonal species by month over one year
@@ -105,11 +95,7 @@ class Graphic(object):
         
         fig3.add_trace(go.Scatter(x=df_sessions['Month'],y=df_sessions['N'],mode="lines", line=go.scatter.Line(color="gray"),  name='Sessions', showlegend=True))
         
-        fig3.show()
-        
-        # Create a JSON representation of the graph
-        graphJSON = json.dumps(fig3, cls=plotly.utils.PlotlyJSONEncoder)
-        return graphJSON
+        return fig3
     
 #===========================================================
 # 4 : Line : distribution of boats by month over one year
@@ -126,11 +112,8 @@ class Graphic(object):
 
         fig4 = px.line(df_only_boats, x="Month", y="N", title=f"Number of boats {year} : {boat_sum} boats", template='plotly_white',labels={"N": "# boats"})
         #fig4.update_yaxes(range=[0,70])
-        fig4.show()
-        
-        # Create a JSON representation of the graph
-        graphJSON = json.dumps(fig4, cls=plotly.utils.PlotlyJSONEncoder)
-        return graphJSON
+
+        return fig4
     
 #=====================================================================
 # 5 : Line : distribution of sessions(half-days) by month over one year
@@ -145,11 +128,8 @@ class Graphic(object):
         
         fig = px.line(df_only_sessions, x="Month", y="N", title=f"Number of sessions {year} : {session_sum} sessions", template='plotly_white',labels={"N": "# sessions"})
         #fig4.update_yaxes(range=[0,70])
-        fig.show()
-        
-        # Create a JSON representation of the graph
-        graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-        return graphJSON
+
+        return fig
 
     
 #=====================================================================
@@ -163,11 +143,8 @@ class Graphic(object):
         
         fig = px.pie(df_without_boats, values='N', names='Month', title=f'Sighting distribution by Month {year}')
         fig.update_traces(hole=.3)
-        fig.show()
 
-        # Create a JSON representation of the graph
-        graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-        return graphJSON
+        return fig
 
 #=====================================================================
 # 7 : Donut : distribution of sightings by species over one year
@@ -181,11 +158,8 @@ class Graphic(object):
 
         # Use `hole` to create a donut-like pie chart
         fig2.update_traces(hole=.3)
-        fig2.show()
 
-        # Create a JSON representation of the graph
-        graphJSON = json.dumps(fig2, cls=plotly.utils.PlotlyJSONEncoder)
-        return graphJSON
+        return fig2
     
 #=====================================================================
 # 8 : Line : distribution of species sightings over years
@@ -202,11 +176,7 @@ class Graphic(object):
         
         fig_years.add_trace(go.Scatter(x=df_with_boats['Year'],y=df_with_boats['N_y'],mode="lines", line=go.scatter.Line(color="gray"),  name='Sessions', showlegend=True))
 
-        fig_years.show()
-        
-        # Create a JSON representation of the graph
-        graphJSON = json.dumps(fig_years, cls=plotly.utils.PlotlyJSONEncoder)
-        return graphJSON
+        return fig_years
 
 #=====================================================================
 # 9 : Line : distribution of boats over years
@@ -218,11 +188,8 @@ class Graphic(object):
 
         fig_years_boats = px.line(df_only_boats, x="Year", y="N_x", title="Boats by Year",template='plotly_white',labels={"N_x": "# boats"})
         fig_years_boats.update_layout(xaxis_range=[2013,2023])#, yaxis_range=[0,100])
-        fig_years_boats.show()
-        
-        # Create a JSON representation of the graph
-        graphJSON = json.dumps(fig_years_boats, cls=plotly.utils.PlotlyJSONEncoder)
-        return graphJSON
+
+        return fig_years_boats
 
 #============================================================================
 # 10 : Line : distribution of sighings/sessions and sighings/boats over years
@@ -252,11 +219,8 @@ class Graphic(object):
         
         fig_years3 = px.line(df_years_data_final, x="Year", y="Sessions", title="Sessions (half-days) by Year",template='plotly_white',labels={"Sessions": "# sessions"})
         fig_years3.update_layout(xaxis_range=[2013,2023])#, yaxis_range=[0,100])
-        fig_years3.show()        
-        
-        # Create a JSON representation of the graph
-        graphJSON = json.dumps(fig_years2, cls=plotly.utils.PlotlyJSONEncoder)
-        return graphJSON
+
+        return fig_years3
     
 #=========================================================
 # 11 : Line : distribution of boats by month over years
@@ -273,26 +237,9 @@ class Graphic(object):
         df_years_data_boats = df_years_data_boats.groupby(['n_month', 'Month', 'Year'])['N'].sum().reset_index()
 
         fig_boats_years = px.line(df_years_data_boats, x="Month", y="N", color="Year", title="Boats by month",template='plotly_white',labels={"N": "# boats"})
-        fig_boats_years.show()
-        
-        # Create a JSON representation of the graph
-        graphJSON = json.dumps(fig_boats_years, cls=plotly.utils.PlotlyJSONEncoder)
-        return graphJSON
 
-#================================================================
-# 12 : polar : distribution of sightings by species over one year
-#---------------------------------------------------------------- 
-    def get_graphic_type_12(self, year):
-
-        species = ['Delphinus delphis','Grampus griseus','Physeter macrocephalus','Tursiops truncatus','Balaenoptera borealis','Globicephala macrorhynchus','Stenella coeruleoalba','Stenella frontalis']
-
-        data_final = self._get_year_data_polar(year)
-
-        self._build_polar_fig(data_final,year,species)
-        
-        speciesJSON = json.dumps(species)
-        return speciesJSON
-    
+        return fig_boats_years
+   
 #================================================================
 # 12b : polar : distribution of sightings by species over one year
 #---------------------------------------------------------------- 
@@ -312,11 +259,7 @@ class Graphic(object):
            
         fig_polar = px.line_polar(df_polar, r="N", theta="Month", color="Species", line_close=True, color_discrete_sequence=px.colors.sequential.Plasma_r)
         
-        fig_polar.show()
-        
-        # Create a JSON representation of the graph
-        graphJSON = json.dumps(fig_polar, cls=plotly.utils.PlotlyJSONEncoder)
-        return graphJSON
+        return fig_polar
         
 #=====================================================================
 # 13: Bar : distribution of boats per day over one year
@@ -327,11 +270,8 @@ class Graphic(object):
         df_only_boats = data_final.xs('bateau',level='Species')
 
         fig = px.bar(df_only_boats, x=df_only_boats.index,y='N', title=f"Number of boats per day {year} ", template='plotly_white',labels={"Date_sortie":"Date","N": "# boats"}, color=df_only_boats.index.month_name())
-        fig.show()
-        
-        # Create a JSON representation of the graph
-        graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-        return graphJSON
+
+        return fig
 
 
 #================================================================
@@ -403,84 +343,6 @@ class Graphic(object):
         df_year_obs_by_sessions['percent'] = round(df_year_obs_by_sessions['N_x'] / df_year_obs_by_sessions['N_y'] *100)
         
         return df_year_obs_by_sessions
-    
-  
-    # get data to build dataframe for polar graphic over one year
-    def _get_year_data_polar(self, year):
-
-        if (self._year != year):
-            data_all =self._fetch_data_all(year)
-            self._year = year
-            self._data_all = data_all
-        else:
-            data_all = self._data_all
-            
-        data_all = data_all.reset_index()  
-        data_all['Month'] = data_all['Date_sortie'].dt.month_name()
-        data_all['Year'] = data_all['Date_sortie'].dt.year
-        data_all['n_month'] = data_all['Date_sortie'].dt.month
-        
-        data_sessions = data_all.query('N>0') 
-        data_sessions = data_sessions.groupby(['n_month','Species', 'Year'], as_index=False)['N'].count()
-
-        data_all = data_all.groupby(['n_month', 'Month','Species','Year'])['N'].sum().reset_index()
-
-        data_all = data_all.merge(data_sessions, on=['n_month','Species','Year'])
-        data_all = data_all.rename(columns={'N_x': 'N'})
-
-        return data_all
-     
-        
-    #get data to build polar graphics
-    def _build_polar_fig(self,data_final,year,species):
-      
-        # Using list comprehension
-        df_all_month = pd.DataFrame([(sp, i) for sp in species for i in range(4, 11)], columns=['Species', 'n_month'])
-                
-        df_species = data_final.query(f"Species in {species}")
-
-        df_sessions = data_final.query("Species == 'bateau'")
-        df_sessions = df_sessions.reset_index()
-
-        df_test =df_all_month.merge(df_species,on=['Species','n_month'],how='outer')
-        df_test = df_test.fillna(0)
-        
-        for sp in species:
-            df_sp = df_test.query(f"Species =='{sp}'")
-            self._save_polar_fig(year,sp,df_sp,df_sessions)
-
-        return
-    
-    
-    #create polar graphics and save files
-    def _save_polar_fig(self,year,Sp,df_sp,df_sessions):
-
-        fig = pl.figure(figsize=(6,6))
-
-        #pour trouver l'angle, pi / (n/2)
-        angles = [pi / 3.5 * k for k in  range(7)]
-
-        ax = pl.subplot(111, projection = 'polar')
-        ax.set_xticks(angles)
-        ax.grid(False)
-        ax.spines["polar"].set_visible(False)
-        ax.set_xticklabels('')
-        #ax.set_yticklabels('')
-
-        for k in range (7):
-            r = df_sessions.loc[k,'N_y']
-            ax.text(angles[k], r + 7, df_sessions.loc[k,'Month'])
-            
-        ax.bar(angles,df_sp['N'], width= pi / 3.5, bottom = 0, facecolor='black',hatch='/\/', edgecolor = 'black', alpha=0.4, label=Sp)
-            
-        ax.bar(angles,df_sessions['N_y'], width= pi / 3.5, bottom = 0, facecolor='red', edgecolor = 'black', alpha=0.4, label=f"Sessions {year}")
-
-        ax.legend(bbox_to_anchor = (1, 1.1))
-        
-        filename = Sp.replace(" ", "-") + "-" + str(year) + ".png"
-        #pl.savefig(filename)
-        #pl.savefig(f"/home/webismagic/mysite/images/azores/{filename}")
-        return
 
    
     #read csv data files to create global dataframe (long)
