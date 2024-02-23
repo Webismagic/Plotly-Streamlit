@@ -2,7 +2,7 @@ import plotly.express as px
 import streamlit as st
 from model import Graphic
 
-gf = Graphic(2023)
+gf = Graphics(2023)
 
 fig = gf.get_graphic_type_1(2023)
 
