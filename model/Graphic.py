@@ -51,7 +51,7 @@ class Graphic(object):
         df_without_boats['Species'] = df_without_boats.index.get_level_values('Species')
         
         fig = px.bar(df_without_boats, x='Month', y='N', color='Species',title = f"Species distribution by month {year}", template='plotly_white',labels={"N": "# sightings"})
-        fig.show()
+        #fig.show()
         
         # Create a JSON representation of the graph
         #graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
