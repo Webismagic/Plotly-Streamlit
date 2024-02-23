@@ -13,7 +13,7 @@ class Graphics(object):
     def __new__(cls, year):
         if cls._instance is None:
             
-            cls._instance = super(Graphic, cls).__new__(cls)
+            cls._instance = super(Graphics, cls).__new__(cls)
             cls._instance.df_years_data = pd.DataFrame()
             cls._instance.df_years_data_summary = pd.DataFrame()
             cls._instance._data_all = cls._instance._fetch_data_all(year)
