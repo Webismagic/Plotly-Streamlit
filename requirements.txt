@@ -1,6 +1,4 @@
 pandas
 plotly
-json
 math
-pylab
 sqlalchemy
