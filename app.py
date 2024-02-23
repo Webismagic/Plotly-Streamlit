@@ -1,8 +1,8 @@
 import plotly.express as px
 import streamlit as st
-from model import Graphic
+from model import Graphic as gph
 
-gf = Graphics(2023)
+gf = gph.Graphics(2023)
 
 fig = gf.get_graphic_type_1(2023)
 
