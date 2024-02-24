@@ -3,7 +3,7 @@ import streamlit as st
 from model import Graphic as gph
 
 gf = gph.Graphics(2023)
-fig1 = gf.get_graphic_type_1(2023)
+fig1 = gf.get_graphic_type_1(year)
 fig2 = gf.get_graphic_type_2(2023)
 fig3 = gf.get_graphic_type_3(2023)
 fig4 = gf.get_graphic_type_4(2023)
