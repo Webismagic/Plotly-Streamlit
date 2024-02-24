@@ -4,7 +4,7 @@ from model import Graphic as gph
 
 gf = gph.Graphics(2023)
 
-fig = gf.get_graphic_type_3(2023)
+fig = gf.get_graphic_type_4(2023)
 
 tab1, tab2 = st.tabs(["Streamlit theme (default)", "Plotly native theme"])
 with tab1:
