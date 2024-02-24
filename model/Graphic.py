@@ -248,12 +248,13 @@ class Graphics(object):
 
     def get_graphic_type_12b(self, year):
         
-        data_final = self._get_year_data(year).reset_index()
-        df_without_boats = data_final.query('Species !="bateau"')
-        df_without_boats['Month'] = df_without_boats['Date_sortie'].dt.month_name()
+        data_final = self._get_year_data(year)
+        df_without_boats = data_final[data_final.index.get_level_values('Species') != 'bateau']
+        df_without_boats['Month'] = df_without_boats.index.get_level_values('Date_sortie').month_name()
+        df_without_boats['Species'] = df_without_boats.index.get_level_values('Species')
         
-        df_sessions = self._get_year_sessions(year).reset_index()
-        df_sessions['Month'] = df_sessions['Date_sortie'].dt.month_name()
+        df_sessions = self._get_year_sessions(year)
+        df_sessions['Month'] = df_sessions.index.get_level_values('Date_sortie').month_name()
         df_sessions['Species'] = 'Sessions'
         
         df_polar = pd.concat([df_without_boats, df_sessions])
