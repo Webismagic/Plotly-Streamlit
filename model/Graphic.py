@@ -140,9 +140,10 @@ class Graphics(object):
 #---------------------------------------------------------------------
     def get_graphic_type_6(self, year):
 
-        data_final = self._get_year_data(year).reset_index()
-        df_without_boats = data_final.query('Species !="bateau"')
-        df_without_boats['Month'] = df_without_boats['Date_sortie'].dt.month_name()
+        data_final = self._get_year_data(year)
+        df_without_boats = data_final[data_final.index.get_level_values('Species') != 'bateau']
+        df_without_boats['Month'] = df_without_boats.index.get_level_values('Date_sortie').month_name()
+        df_without_boats['Species'] = df_without_boats.index.get_level_values('Species')
         
         fig = px.pie(df_without_boats, values='N', names='Month', title=f'Sighting distribution by Month {year}')
         fig.update_traces(hole=.3)
@@ -154,8 +155,8 @@ class Graphics(object):
 #---------------------------------------------------------------------
     def get_graphic_type_7(self, year):
 
-        data_final = self._get_year_data(year).reset_index()
-        df_without_boats = data_final.query('Species !="bateau"')
+        data_final = self._get_year_data(year)
+        df_without_boats = data_final[data_final.index.get_level_values('Species') != 'bateau']
         
         fig2 = px.pie(df_without_boats, values='N', names='Species', title=f'Sighting distribution by Species {year}')
 
