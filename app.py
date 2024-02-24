@@ -1,7 +1,10 @@
 import plotly.express as px
 import streamlit as st
 from model import Graphic as gph
+
 year = 2023
+st.session_state.active_year = year
+
 gf = gph.Graphics(year)
 fig1 = gf.get_graphic_type_1(year)
 fig2 = gf.get_graphic_type_2(year)
@@ -64,5 +67,7 @@ with tab13:
 
 year = st.select_slider(
     'Select a year',
-    options=[2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023], value=2023)
+    options=[2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023], value=2023, key="active_year")
+
 st.write('Choosen year:', year)
+  
