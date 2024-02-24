@@ -58,9 +58,8 @@ class Graphics(object):
     def get_graphic_type_2(self, year):
 
         species = ['Delphinus delphis','Grampus griseus','Physeter macrocephalus','Tursiops truncatus']
-        
-        data_final = self._get_year_data(year) #.reset_index()
-        df_without_boats = data_final.query('Species!="bateau"')
+        data_final2 = self._get_year_data(year).reset_index()
+        df_without_boats = data_final2.query('Species!="bateau"')
         df_without_boats['Month'] = df_without_boats['Date_sortie'].dt.month_name()
             
         df_sessions = self._get_year_sessions(year)
