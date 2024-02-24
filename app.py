@@ -64,5 +64,5 @@ with tab13:
 
 year = st.select_slider(
     'Select a year',
-    options=[2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023])
+    options=[2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023], value=2023)
 st.write('Choosen year:', year)
