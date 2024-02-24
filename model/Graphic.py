@@ -263,7 +263,7 @@ class Graphics(object):
         
         df_polar = pd.concat([df_without_boats, df_sessions])
            
-        fig_polar = px.line_polar(df_polar, r="N", theta="Month", color="Species", line_close=True, color_discrete_sequence=px.colors.sequential.Plasma_r)
+        fig_polar = px.line_polar(df_polar, r="N", theta="Month", color="Species", line_close=True, color_discrete_sequence=px.colors.sequential.Plasma_r,title = f"Species distribution by month {year}")
         
         return fig_polar
         
