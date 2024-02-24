@@ -157,6 +157,7 @@ class Graphics(object):
 
         data_final = self._get_year_data(year)
         df_without_boats = data_final[data_final.index.get_level_values('Species') != 'bateau']
+        df_without_boats['Species'] = df_without_boats.index.get_level_values('Species')
         
         fig2 = px.pie(df_without_boats, values='N', names='Species', title=f'Sighting distribution by Species {year}')
 
