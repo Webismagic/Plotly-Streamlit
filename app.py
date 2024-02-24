@@ -2,8 +2,10 @@ import plotly.express as px
 import streamlit as st
 from model import Graphic as gph
 
-year = 2023
-st.session_state.active_year = year
+if 'active_year' not in st.session_state:
+    st.session_state.active_year = 2023
+  
+year = st.session_state.active_year
 
 gf = gph.Graphics(year)
 fig1 = gf.get_graphic_type_1(year)
