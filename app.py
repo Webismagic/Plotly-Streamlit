@@ -8,9 +8,11 @@ fig2 = gf.get_graphic_type_2(2023)
 fig3 = gf.get_graphic_type_3(2023)
 fig4 = gf.get_graphic_type_4(2023)
 fig5 = gf.get_graphic_type_5(2023)
+fig6 = gf.get_graphic_type_6(2023)
+fig7 = gf.get_graphic_type_7(2023)
 fig12 = gf.get_graphic_type_12b(2023)
 
-tab1, tab2, tab3, tab4, tab5, tab12 = st.tabs(["Chart 1", "Chart 2", "Chart 3", "Chart 4", "Chart 5", "Chart 12"])
+tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab12 = st.tabs(["Chart 1", "Chart 2", "Chart 3", "Chart 4", "Chart 5", "Chart 6", "Chart 7", "Chart 12"])
 with tab1:
     # 1.
     # This is the default. So you can also omit the theme argument.
@@ -27,6 +29,12 @@ with tab4:
 with tab5:
     # 5.
     st.plotly_chart(fig5, theme="streamlit", use_container_width=True)
+with tab6:
+    # 6.
+    st.plotly_chart(fig6, theme="streamlit", use_container_width=True)
+with tab7:
+    # 7.
+    st.plotly_chart(fig7, theme="streamlit", use_container_width=True)
 with tab12:
     # 12.
     st.plotly_chart(fig12, theme="streamlit", use_container_width=True)
