@@ -61,3 +61,8 @@ with tab12:
 with tab13:
     # 13.
     st.plotly_chart(fig13, theme="streamlit", use_container_width=True)
+
+year = st.select_slider(
+    'Select a year',
+    options=[2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023])
+st.write('Choosen year:', year)
