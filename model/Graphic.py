@@ -59,9 +59,10 @@ class Graphics(object):
 
         species = ['Delphinus delphis','Grampus griseus','Physeter macrocephalus','Tursiops truncatus']
         data_final = self._get_year_data(year)
-        data_final2 = data_final.reset_index()
-        df_without_boats = data_final2.query('Species!="bateau"')
-        df_without_boats['Month'] = df_without_boats['Date_sortie'].dt.month_name()
+
+        df_without_boats = data_final[data_final.index.get_level_values('Species') != 'bateau']
+        df_without_boats['Month'] = df_without_boats.index.get_level_values('Date_sortie').month_name()
+        df_without_boats['Species'] = df_without_boats.index.get_level_values('Species')
             
         df_sessions = self._get_year_sessions(year)
         df_sessions['Month'] = df_sessions.index.get_level_values('Date_sortie').month_name()
