@@ -24,7 +24,7 @@ with tab3:
 with tab4:
     # 4.
     st.plotly_chart(fig4, theme="streamlit", use_container_width=True)
-with tab:
+with tab5:
     # 5.
     st.plotly_chart(fig5, theme="streamlit", use_container_width=True)
 with tab12:
