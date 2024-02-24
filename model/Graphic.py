@@ -105,10 +105,10 @@ class Graphics(object):
 #-----------------------------------------------------------
     def get_graphic_type_4(self, year):
         
-        data_final = self._get_year_data(year).reset_index()
-        df_only_boats = data_final.query('Species=="bateau"')
-        df_only_boats['Month'] = df_only_boats['Date_sortie'].dt.month_name()
-        df_only_boats['Year'] = df_only_boats['Date_sortie'].dt.year
+        data_final = self._get_year_data(year)
+        df_only_boats = data_final[data_final.index.get_level_values('Species') == 'bateau']
+        df_only_boats['Month'] = df_only_boats.index.get_level_values('Date_sortie').month_name()
+        df_only_boats['Year'] = df_only_boats.index.get_level_values('Date_sortie').year
            
         df_sum_year = df_only_boats.groupby(['Year'])['N'].sum().reset_index()
         boat_sum = df_sum_year['N'][0]
