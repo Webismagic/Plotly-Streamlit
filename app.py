@@ -13,7 +13,7 @@ species = {
     'sp3': 2
 }
 if 'species_number' not in st.session_state:
-    st.session_state.species_number = 1
+    st.session_state.species_number = 0
   
 species_number = st.session_state.species_number
 
@@ -69,7 +69,7 @@ with tab10:
     st.plotly_chart(fig10, theme="streamlit", use_container_width=True)
 with tab11:
     # 11.
-    species_number = st.selectbox('choose a species?', species.keys(), format_func=lambda x: species[x])
+    species_list = st.selectbox('choose a species?', species.keys(), format_func=lambda x: species[x], key="species_number")
     st.plotly_chart(fig11, theme="streamlit", use_container_width=True)
 with tab12:
     # 12.
