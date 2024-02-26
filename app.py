@@ -9,8 +9,14 @@ year = st.session_state.active_year
 
 species = {
     0: 'bateau',
-    1: '1',
-    2: '2'
+    1: 'Balaenoptera borealis',
+    2: 'Globicephala macrorhynchus',
+    3: 'Stenella coeruleoalba',
+    4: 'Stenella frontalis',
+    5: 'Delphinus delphis',
+    6: 'Grampus griseus',
+    7: 'Physeter macrocephalus',
+    8: 'Tursiops truncatus'
 }
 
 if 'species_number' not in st.session_state:
