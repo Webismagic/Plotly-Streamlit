@@ -8,9 +8,9 @@ if 'active_year' not in st.session_state:
 year = st.session_state.active_year
 
 species = {
-    'sp1': '0',
-    'sp2': '1',
-    'sp3': '2'
+    '0': '0',
+    '1': '1',
+    '2': '2'
 }
 
 if 'species_number' not in st.session_state:
