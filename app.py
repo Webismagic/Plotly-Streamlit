@@ -77,7 +77,6 @@ with tab10:
 with tab11:
     # 11.
     species_choosen = st.selectbox('choose a species?', options=list(species.keys()),format_func=lambda x: species[x], key="species_number")
-    st.write('You selected:', species_choosen)
     st.plotly_chart(fig11, theme="streamlit", use_container_width=True)
 with tab12:
     # 12.
