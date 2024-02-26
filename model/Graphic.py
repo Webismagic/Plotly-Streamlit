@@ -262,10 +262,16 @@ class Graphics(object):
         df_sessions['Species'] = 'Sessions'
         
         df_polar = pd.concat([df_without_boats, df_sessions])
-           
+
+        df_polar_percent = pd.merge(df_polar, df_sessions, on='Month')
+        df_polar_percent['Percent'] = round((df_polar_percent['N_x'] / df_polar_percent['N_y']) * 100)
+        df_polar_percent = df_polar_percent.rename(columns={'Species_x': 'Species'})
+        
         fig_polar = px.line_polar(df_polar, r="N", theta="Month", color="Species", line_close=True, color_discrete_sequence=px.colors.sequential.Plasma_r,title = f"Species distribution by month {year}")
         
-        return fig_polar
+        fig_polar_percent = px.line_polar(df_polar_percent, r="Percent", theta="Month", color="Species", line_close=True, color_discrete_sequence=px.colors.sequential.Plasma_r,title = f"Species distribution by month {year}")
+        
+        return fig_polar_percent
         
 #=====================================================================
 # 13: Bar : distribution of boats per day over one year
