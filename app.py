@@ -7,6 +7,16 @@ if 'active_year' not in st.session_state:
   
 year = st.session_state.active_year
 
+species = {
+    'sp1': 0,
+    'sp2': 1,
+    'sp3': 2
+}
+if 'species_number' not in st.session_state:
+    st.session_state.species_number = 0
+  
+species_number = st.session_state.species_number
+
 gf = gph.Graphics(year)
 fig1 = gf.get_graphic_type_1(year)
 fig2 = gf.get_graphic_type_2(year)
@@ -18,7 +28,7 @@ fig7 = gf.get_graphic_type_7(year)
 fig8 = gf.get_graphic_type_8()
 fig9 = gf.get_graphic_type_9()
 fig10 = gf.get_graphic_type_10()
-fig11 = gf.get_graphic_type_11(1)
+fig11 = gf.get_graphic_type_11(species_number)
 fig12 = gf.get_graphic_type_12(year)
 fig13 = gf.get_graphic_type_13(year)
 
@@ -59,6 +69,7 @@ with tab10:
     st.plotly_chart(fig10, theme="streamlit", use_container_width=True)
 with tab11:
     # 11.
+    species_number = st.selectbox('choose a species?', species.keys(), format_func=lambda x: species[x])
     st.plotly_chart(fig11, theme="streamlit", use_container_width=True)
 with tab12:
     # 12.
