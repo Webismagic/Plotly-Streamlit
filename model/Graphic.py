@@ -269,7 +269,7 @@ class Graphics(object):
         
         fig_polar = px.line_polar(df_polar, r="N", theta="Month", color="Species", line_close=True, color_discrete_sequence=px.colors.sequential.Plasma_r,title = f"Species distribution by month {year}")
         
-        fig_polar_percent = px.line_polar(df_polar_percent, r="Percent", theta="Month", color="Species", line_close=True, color_discrete_sequence=px.colors.sequential.Plasma_r,title = f"Species distribution by month {year}")
+        fig_polar_percent = px.line_polar(df_polar_percent, r="Percent", theta="Month", color="Species", line_close=True, color_discrete_sequence=px.colors.sequential.Plasma_r,title = f"Species distribution (percent) by month {year}")
         
         return fig_polar_percent
         
