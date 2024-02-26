@@ -70,7 +70,7 @@ with tab10:
     st.plotly_chart(fig10, theme="streamlit", use_container_width=True)
 with tab11:
     # 11.
-    species_choosen = st.selectbox('choose a species?', species.keys(), format_func=lambda x: species[x], key="species_number")
+    species_choosen = st.selectbox('choose a species?', species.keys(), key="species_number")
     st.plotly_chart(fig11, theme="streamlit", use_container_width=True)
 with tab12:
     # 12.
