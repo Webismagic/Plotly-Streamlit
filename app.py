@@ -19,7 +19,7 @@ fig8 = gf.get_graphic_type_8()
 fig9 = gf.get_graphic_type_9()
 fig10 = gf.get_graphic_type_10()
 fig11 = gf.get_graphic_type_11()
-fig12 = gf.get_graphic_type_12b(year)
+fig12 = gf.get_graphic_type_12(year)
 fig13 = gf.get_graphic_type_13(year)
 
 tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9, tab10, tab11, tab12, tab13 = st.tabs(["Chart 1", "Chart 2", "Chart 3",
