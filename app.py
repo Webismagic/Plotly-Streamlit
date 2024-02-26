@@ -13,7 +13,7 @@ species = {
     'sp3': 2
 }
 if 'species_number' not in st.session_state:
-    st.session_state.species_number = 0
+    st.session_state.species_number = 1
   
 species_number = st.session_state.species_number
 
