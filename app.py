@@ -28,7 +28,7 @@ fig7 = gf.get_graphic_type_7(year)
 fig8 = gf.get_graphic_type_8()
 fig9 = gf.get_graphic_type_9()
 fig10 = gf.get_graphic_type_10()
-fig11 = gf.get_graphic_type_11(species_number)
+fig11 = gf.get_graphic_type_11(int(species_number))
 fig12 = gf.get_graphic_type_12(year)
 fig13 = gf.get_graphic_type_13(year)
 
