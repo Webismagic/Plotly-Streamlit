@@ -28,18 +28,18 @@ gf = gph.Graphics(year)
 fig1 = gf.get_graphic_type_1(year)
 fig2 = gf.get_graphic_type_2(year)
 fig3 = gf.get_graphic_type_3(year)
-fig4 = gf.get_graphic_type_4(year)
-fig5 = gf.get_graphic_type_5(year)
+#fig4 = gf.get_graphic_type_4(year)
+#fig5 = gf.get_graphic_type_5(year)
 fig6 = gf.get_graphic_type_6(year)
 fig7 = gf.get_graphic_type_7(year)
 fig8 = gf.get_graphic_type_8()
-fig9 = gf.get_graphic_type_9()
-fig10 = gf.get_graphic_type_10()
+#fig9 = gf.get_graphic_type_9()
+#fig10 = gf.get_graphic_type_10()
 fig11 = gf.get_graphic_type_11(int(species_choosen))
 fig12 = gf.get_graphic_type_12(year)
 fig13 = gf.get_graphic_type_13(year)
 
-tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9, tab10, tab11, tab12, tab13 = st.tabs(["Chart 1", "Chart 2", "Chart 3",
+tab1, tab2, tab3, tab6, tab7, tab8, tab11, tab12, tab13 = st.tabs(["Chart 1", "Chart 2", "Chart 3",
                                                                             "Chart 6","Chart 7", "Chart 8", "Chart 11",
                                                                             "Chart 12", "Chart 13"])
 with tab1:
