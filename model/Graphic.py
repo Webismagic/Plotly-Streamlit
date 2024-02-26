@@ -244,10 +244,11 @@ class Graphics(object):
         df_years_data_sp['n_month'] = df_years_data_sp['Date_sortie'].dt.month
         
         df_years_data_sp = df_years_data_sp.groupby(['n_month', 'Month', 'Year'])['N'].sum().reset_index()
-        df_years_data_sp = df_years_data_sp.sort_values(by=['n_month','Year'])
+        df_years_data_sp = df_years_data_sp.sort_values(by=['Year','n_month'])
         
-        fig_sp_years = px.line(df_years_data_sp, x="n_month", y="N", color="Year", title=f"{sp} by month",template='plotly_white',labels={"N": "Number"})
-
+        fig_sp_years = px.line(df_years_data_sp, x="Month", y="N", color="Year", title=f"{sp} by month",template='plotly_white',labels={"N": "Number"})
+        fig_sp_years.update_xaxes(categoryorder='array', categoryarray= ['April', 'May', 'June', 'July', 'August', 'September', 'October'])
+        
         return fig_sp_years
    
 #================================================================
