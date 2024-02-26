@@ -230,20 +230,25 @@ class Graphics(object):
 #=========================================================
 # 11 : Line : distribution of boats by month over years
 #---------------------------------------------------------     
-    def get_graphic_type_11(self):
-
+    def get_graphic_type_11(self,species_number):
+        
+        species =  ['bateau','Balaenoptera borealis','Globicephala macrorhynchus','Stenella coeruleoalba',
+                    'Stenella frontalis','Delphinus delphis','Grampus griseus','Physeter macrocephalus','Tursiops truncatus']
+        sp = species[species_number]
+        
         df_years_data = self.df_years_data.reset_index()
-        df_years_data_boats = df_years_data.query("Species == 'bateau' and N>0")
+        df_years_data_sp = df_years_data.query("Species == @sp and N>0")
         
-        df_years_data_boats['Month'] = df_years_data_boats['Date_sortie'].dt.month_name()
-        df_years_data_boats['Year'] = df_years_data_boats['Date_sortie'].dt.year
-        df_years_data_boats['n_month'] = df_years_data_boats['Date_sortie'].dt.month
+        df_years_data_sp['Month'] = df_years_data_sp['Date_sortie'].dt.month_name()
+        df_years_data_sp['Year'] = df_years_data_sp['Date_sortie'].dt.year
+        df_years_data_sp['n_month'] = df_years_data_sp['Date_sortie'].dt.month
         
-        df_years_data_boats = df_years_data_boats.groupby(['n_month', 'Month', 'Year'])['N'].sum().reset_index()
+        df_years_data_sp = df_years_data_sp.groupby(['n_month', 'Month', 'Year'])['N'].sum().reset_index()
+        df_years_data_sp = df_years_data_sp.sort_values(by=['n_month','Year'])
+        
+        fig_sp_years = px.line(df_years_data_sp, x="n_month", y="N", color="Year", title=f"{sp} by month",template='plotly_white',labels={"N": "Number"})
 
-        fig_boats_years = px.line(df_years_data_boats, x="Month", y="N", color="Year", title="Boats by month",template='plotly_white',labels={"N": "# boats"})
-
-        return fig_boats_years
+        return fig_sp_years
    
 #================================================================
 # 12 : polar : distribution of sightings by species over one year
