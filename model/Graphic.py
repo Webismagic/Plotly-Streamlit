@@ -250,7 +250,7 @@ class Graphics(object):
 #---------------------------------------------------------------- 
 #https://plotly.com/python/polar-chart/
 
-    def get_graphic_type_12b(self, year):
+    def get_graphic_type_12(self, year):
         
         data_final = self._get_year_data(year)
         df_without_boats = data_final[data_final.index.get_level_values('Species') != 'bateau']
