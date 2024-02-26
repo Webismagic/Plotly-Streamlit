@@ -42,7 +42,7 @@ fig13 = gf.get_graphic_type_13(year)
 tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9, tab10, tab11, tab12, tab13 = st.tabs(["Chart 1", "Chart 2", "Chart 3",
                                                                               "Chart 4", "Chart 5", "Chart 6",
                                                                               "Chart 7", "Chart 8", "Chart 9",
-                                                                              "Chart 10", "11", "12", "13"])
+                                                                              "Chart 10", "Chart 11", "Chart 12", "Chart 13"])
 with tab1:
     # 1.
     # This is the default. So you can also omit the theme argument.
@@ -53,12 +53,12 @@ with tab2:
 with tab3:
     # 3.
     st.plotly_chart(fig3, theme="streamlit", use_container_width=True)
-with tab4:
+#with tab4:
     # 4.
-    st.plotly_chart(fig4, theme="streamlit", use_container_width=True)
-with tab5:
+    #st.plotly_chart(fig4, theme="streamlit", use_container_width=True)
+#with tab5:
     # 5.
-    st.plotly_chart(fig5, theme="streamlit", use_container_width=True)
+    #st.plotly_chart(fig5, theme="streamlit", use_container_width=True)
 with tab6:
     # 6.
     st.plotly_chart(fig6, theme="streamlit", use_container_width=True)
@@ -68,12 +68,12 @@ with tab7:
 with tab8:
     # 8.
     st.plotly_chart(fig8, theme="streamlit", use_container_width=True)
-with tab9:
+#with tab9:
     # 9.
-    st.plotly_chart(fig9, theme="streamlit", use_container_width=True)
-with tab10:
+    #st.plotly_chart(fig9, theme="streamlit", use_container_width=True)
+#with tab10:
     # 10.
-    st.plotly_chart(fig10, theme="streamlit", use_container_width=True)
+    #st.plotly_chart(fig10, theme="streamlit", use_container_width=True)
 with tab11:
     # 11.
     species_choosen = st.selectbox('choose a species?', options=list(species.keys()),format_func=lambda x: species[x], key="species_number")
