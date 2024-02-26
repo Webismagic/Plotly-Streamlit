@@ -246,7 +246,7 @@ class Graphics(object):
         return fig_boats_years
    
 #================================================================
-# 12b : polar : distribution of sightings by species over one year
+# 12 : polar : distribution of sightings by species over one year
 #---------------------------------------------------------------- 
 #https://plotly.com/python/polar-chart/
 
