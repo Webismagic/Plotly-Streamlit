@@ -41,7 +41,7 @@ class Graphics(object):
 #==================================================================
 # 1 : Bar : distribution of species by month over one year
 #------------------------------------------------------------------
-    def get_graphic_type_1(self, year):
+    def get_graphic_type_1(self, year, option=1):
 
         data_final = self._get_year_data(year)
         df_without_boats = data_final[data_final.index.get_level_values('Species') != 'bateau']
@@ -49,6 +49,8 @@ class Graphics(object):
         df_without_boats['Species'] = df_without_boats.index.get_level_values('Species')
         
         fig = px.bar(df_without_boats, x='Month', y='N', color='Species',title = f"Species distribution by month {year}", template='plotly_white',labels={"N": "# sightings"})
+        if (option == 2):
+            fig = px.bar(df_without_boats, x='N', y='Species', color='Month',title = f"Species distribution by month {year}", template='plotly_white',labels={"N": "# sightings"}, orientation='h')
         
         return fig
     
