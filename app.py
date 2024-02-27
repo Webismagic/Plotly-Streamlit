@@ -26,6 +26,7 @@ species_choosen = st.session_state.species_number
 
 gf = gph.Graphics(year)
 fig1 = gf.get_graphic_type_1(year)
+fig1h = gf.get_graphic_type_1(year,2)
 fig2 = gf.get_graphic_type_2(year)
 fig3 = gf.get_graphic_type_3(year)
 #fig4 = gf.get_graphic_type_4(year)
@@ -39,13 +40,17 @@ fig11 = gf.get_graphic_type_11(int(species_choosen))
 fig12 = gf.get_graphic_type_12(year)
 fig13 = gf.get_graphic_type_13(year)
 
-tab1, tab2, tab3, tab6, tab7, tab8, tab11, tab12, tab13 = st.tabs(["Chart 1", "Chart 2", "Chart 3",
-                                                                            "Chart 6","Chart 7", "Chart 8", "Chart 11",
-                                                                            "Chart 12", "Chart 13"])
+tab1, tab1h, tab2, tab3, tab6, tab7, tab8, tab11, tab12, tab13 = st.tabs(["Chart 1", "Chart 2", "Chart 3",
+                                                                            "Chart 4","Chart 5", "Chart 6", "Chart 7",
+                                                                            "Chart 8", "Chart 9", "Chart 10"])
 with tab1:
     # 1.
     # This is the default. So you can also omit the theme argument.
     st.plotly_chart(fig1, theme="streamlit", use_container_width=True)
+with tab1h:
+    # 1h.
+    # This is the default. So you can also omit the theme argument.
+    st.plotly_chart(fig1h, theme="streamlit", use_container_width=True)
 with tab2:
     # 2.
     st.plotly_chart(fig2, theme="streamlit", use_container_width=True)
