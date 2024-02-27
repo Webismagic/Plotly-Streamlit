@@ -51,7 +51,7 @@ class Graphics(object):
         fig = px.bar(df_without_boats, x='Month', y='N', color='Species',title = f"Species distribution by month {year}", template='plotly_white',labels={"N": "# sightings"})
         if (option == 2):
             fig = px.bar(df_without_boats, x='N', y='Species', color='Month',title = f"Species distribution by month {year}", template='plotly_white',labels={"N": "# sightings"}, orientation='h')
-        
+            fig.update_layout(xaxis_range=[0,250])
         return fig
     
 #=====================================================================
